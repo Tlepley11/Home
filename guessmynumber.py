@@ -7,10 +7,10 @@ def main():
 	User = raw_input("What's your name? ")
 	print ("Hi " + User + "!")
 	print("Let's play a guessing game. I'll choose a number and you try to guess it.")
-	print ("I am thinking of a number between X and Y where Y can't be over 500.")
+	print ("I am thinking of a number between X and Y where Y can't be over 100.")
 	range_low = abs(input("What should the value of X be? "))
 	while range_low > 90:
-		print("X must be greater than or equal to 0 and less than or equal to 90.")
+		print("X must be greater than or equal to 0 and less than or equal to 99.")
 		range_low = abs(input("What should the value of X be? "))
 	range_high = abs(input("What should the value of Y be? "))
 	while range_low >= range_high or range_high > 100:
