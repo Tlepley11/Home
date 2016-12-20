@@ -32,7 +32,7 @@ def main():
 			elif guess == magic_number:
 				break
 	except:
-		print("ErroRrRrRRRRRr!")
+		print("Error: Invalid integer entered.")
 		exit()
 	if guess == magic_number:
 		print()
