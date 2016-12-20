@@ -4,42 +4,46 @@ def main():
 	from random import randint
 	guessesTaken = 0
 	guess = 0
-	User = raw_input("What is your name? ")
+	User = raw_input("What's your name? ")
 	print ("Hi " + User + "!")
 	print("Let's play a guessing game. I'll choose a number and you try to guess it.")
 	print ("I am thinking of a number between X and Y where Y can't be over 500.")
 	range_low = abs(input("What should the value of X be? "))
-	if 0 > range_low > 500:
-		print("X must be greater than or equal to 0 and less than 500.")
+	while range_low > 90:
+		print("X must be greater than or equal to 0 and less than or equal to 90.")
 		range_low = abs(input("What should the value of X be? "))
 	range_high = abs(input("What should the value of Y be? "))
-	if range_low >= range_high or range_high > 500:
-		print("Y must be greater than " + str(range_low) + " and less than 500.")
+	while range_low >= range_high or range_high > 100:
+		print("Y must be greater than " + str(range_low) + " and less than or equal to 100.")
 		range_high = abs(input("What should the value of Y be? "))
-	guesses = range_high/10
+	guesses = (range_high-range_low)/5
+	numwords = ['', 'one', 'two', 'three', 'four', 'five', 'six','seven','eight','nine',\
+				'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen',\
+				'eighteen', 'nineteen','twenty']
 	magic_number = randint(range_low,range_high)
-	print("Alright, you have " + str(guesses) + " guesses!")
+	print("Alright, you have " + str(numwords[guesses]) + " guesse(s)!")
 	try:
 		while guessesTaken < guesses:
-			guess = int(input("Please take a guess: "))
+			guess = int(raw_input("Please take a guess: ".replace(',','')))
 			guessesTaken = guessesTaken + 1
 			if range_low > guess or guess > range_high:
 				print("Number outside of %s to %s, bozo. Try again." % (range_low, range_high))
 			elif guess < magic_number:
-				print("Too low. Try again.")
+				print("Too low.")
 			elif guess > magic_number:
-				print("Too high. Try again.")
+				print("Too high.")
 			elif guess == magic_number:
 				break
 	except:
 		print("Error: Invalid integer entered.")
 		exit()
 	if guess == magic_number:
-		print()
-		print("You guessed correct, great job!")
-		print("It took " + str(guessesTaken) + " guesses to find the magic number!")
+		print("\nYup, that's the number.")
 	else:
-		print()
-		print("Sorry, " + User + ", the Magic Number is " + str(magic_number) + ".")
+		print("\nSorry, " + User + ", the Magic Number is " + str(magic_number) + ".")
+	if guess == magic_number and guessesTaken == 1:
+		print("It only took " + str(numwords[guessesTaken]) + " guess to find the number!")
+	elif guess == magic_number and guessesTaken > 1:
+		print("It took " + str(numwords[guessesTaken]) + " guesses to find the number!")
 
 main()
