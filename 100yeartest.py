@@ -1,4 +1,5 @@
 name = raw_input("Please enter your name: ")
 print("Your name is" + " " + name)
-
-
+age = input("How old are you?: ")
+print("Thanks, " + name)
+print("You will be 100 years old in the year %s.") % ((2016-age)+100)
